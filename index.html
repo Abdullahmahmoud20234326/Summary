@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title> شرح منهج تطبيقات انترنت</title>
+    <title>شرح منهج تطبيقات انترنت</title>
 
     <link rel="icon" href="html.jpg" type="image/png">
     <style>
@@ -120,9 +120,10 @@
             transition: all 0.5s ease;
         }
 
-        video {
+        iframe {
             width: 100%;
-            height: auto;
+            height: 450px;
+            border: none;
             display: block;
         }
 
@@ -134,39 +135,33 @@
 </head>
 <body>
 
-    <h1>🌟🌟 اختر شرح لابتوب & هاتف🌟🌟</h1>
+    <h1>🌟🌟 اختر شرح لابتوب & هاتف 🌟🌟</h1>
 
     <div class="cards-container">
         <div class="card">
-            <button class="play-btn" onclick="playVideo('laptop.mp4')">▶</button>
+            <button class="play-btn" onclick="playVideo('https://drive.google.com/file/d/1M2t7Qoz8QL2gJL_WZIWg-CSdczYnsVV9/view?usp=drive_link')">▶</button>
             <img src="لابتوب.jpeg" alt="فيديو 1">
-            <div class="card-title" onclick="playVideo('laptop.mp4')">💻 شرح علي لابتوب 💻</div>
+            <div class="card-title" onclick="playVideo('https://drive.google.com/file/d/1M2t7Qoz8QL2gJL_WZIWg-CSdczYnsVV9/view?usp=drive_link')">💻 شرح علي لابتوب 💻</div>
         </div>
 
         <div class="card">
-            <button class="play-btn" onclick="playVideo('video2.mp4')">▶</button>
+            <button class="play-btn" onclick="playVideo('https:')">▶</button>
             <img src="هاتف.jpeg" alt="فيديو 2">
-            <div class="card-title" onclick="playVideo('video2.mp4')">📱  شرح علي هاتف📱</div>
+            <div class="card-title" onclick="playVideo('')">📱 شرح علي هاتف 📱</div>
         </div>
     </div>
 
     <div id="videoContainer">
-        <video id="videoPlayer" controls>
-            <source id="videoSource" src="" type="video/mp4">
-            متصفحك لا يدعم عرض الفيديو.
-        </video>
+        <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <script>
-        function playVideo(videoFile) {
-            var videoPlayer = document.getElementById('videoPlayer');
-            var videoSource = document.getElementById('videoSource');
+        function playVideo(videoURL) {
+            var frame = document.getElementById('videoFrame');
             var container = document.getElementById('videoContainer');
 
-            videoSource.src = videoFile;
-            videoPlayer.load();
+            frame.src = videoURL;
             container.classList.add('show');
-            videoPlayer.play();
             container.scrollIntoView({ behavior: "smooth" });
         }
     </script>
