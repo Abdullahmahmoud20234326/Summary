@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title> شرح منهج تطبيقات انترنت</title>
+    <style>
+        body {
+            background: linear-gradient(270deg, #fe4f4f, #0011fe, #ff9ae1, #a18cd1, #93f7fb, #835ee7, #0976a1);
+            background-size: 1400% 1400%;
+            animation: gradientShift 30s ease infinite;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: float 3s infinite;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            user-select: none;
+        }
+
+        .card-title:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+            transition: background 0.3s;
+        }
+
+        .play-btn:hover {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+
+        #videoContainer {
+            margin-top: 40px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .show {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌟🌟 اختر شرح لابتوب & هاتف🌟🌟</h1>
+
+    <div class="cards-container">
+        <div class="card">
+            <button class="play-btn" onclick="playVideo('laptop.mp4')">▶</button>
+            <img src="لابتوب.jpeg" alt="فيديو 1">
+            <div class="card-title" onclick="playVideo('laptop.mp4')">💻 شرح علي لابتوب 💻</div>
+        </div>
+
+        <div class="card">
+            <button class="play-btn" onclick="playVideo('video2.mp4')">▶</button>
+            <img src="هاتف.jpeg" alt="فيديو 2">
+            <div class="card-title" onclick="playVideo('video2.mp4')">📱  شرح علي هاتف📱</div>
+        </div>
+    </div>
+
+    <div id="videoContainer">
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            متصفحك لا يدعم عرض الفيديو.
+        </video>
+    </div>
+
+    <script>
+        function playVideo(videoFile) {
+            var videoPlayer = document.getElementById('videoPlayer');
+            var videoSource = document.getElementById('videoSource');
+            var container = document.getElementById('videoContainer');
+
+            videoSource.src = videoFile;
+            videoPlayer.load();
+            container.classList.add('show');
+            videoPlayer.play();
+            container.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+
+</body>
+</html>
